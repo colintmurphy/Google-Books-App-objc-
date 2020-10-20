@@ -7,9 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @class BookImageInfo;
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface VolumeInfo : NSObject
 

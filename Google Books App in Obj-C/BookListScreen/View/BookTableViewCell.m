@@ -37,7 +37,6 @@ NSString *reuseId = @"BookTableViewCell";
     _bookLabel.text = title;
     
     [[NetworkManager shared] downloadImageWithUrl:imageUrlString completion:^(UIImage * _Nullable image) {
-        
         if (image) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self->_bookImageView.image = image;

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r9Y-rs-uu3">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookTableViewCell" id="mas-P0-gj4" customClass="BookTableViewCell">
@@ -30,12 +30,12 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ONz-gj-vNL">
                                                     <rect key="frame" x="28" y="19" width="80.5" height="80.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="Eep-8h-Cbn"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="Eep-8h-Cbn"/>
                                                         <constraint firstAttribute="width" secondItem="ONz-gj-vNL" secondAttribute="height" id="k0J-cK-v0O"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgt-Le-egQ">
-                                                    <rect key="frame" x="124.5" y="46" width="41" height="26.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgt-Le-egQ">
+                                                    <rect key="frame" x="124.5" y="19" width="41" height="80.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -43,6 +43,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="bgt-Le-egQ" secondAttribute="trailing" constant="16" id="89h-XG-o7S"/>
+                                                <constraint firstItem="bgt-Le-egQ" firstAttribute="height" secondItem="ONz-gj-vNL" secondAttribute="height" id="Bb1-v9-jBA"/>
                                                 <constraint firstItem="ONz-gj-vNL" firstAttribute="top" secondItem="64s-VV-pe1" secondAttribute="topMargin" constant="8" id="L1c-oC-gz7"/>
                                                 <constraint firstItem="bgt-Le-egQ" firstAttribute="centerY" secondItem="ONz-gj-vNL" secondAttribute="centerY" id="U5E-0d-LAW"/>
                                                 <constraint firstItem="bgt-Le-egQ" firstAttribute="leading" secondItem="ONz-gj-vNL" secondAttribute="trailing" constant="16" id="gpT-Yr-qlL"/>
@@ -57,18 +58,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="NQK-su-gwr">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="r9Y-rs-uu3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7sf-c5-VjX"/>
+                            <constraint firstItem="NQK-su-gwr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BHE-ML-dye"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="r9Y-rs-uu3" secondAttribute="trailing" id="VEh-b2-T3i"/>
                             <constraint firstItem="r9Y-rs-uu3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Z8y-8B-Rvj"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="r9Y-rs-uu3" secondAttribute="bottom" id="dbK-h3-b86"/>
+                            <constraint firstItem="NQK-su-gwr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aIh-Mz-Gvi"/>
+                            <constraint firstAttribute="bottom" secondItem="r9Y-rs-uu3" secondAttribute="bottom" id="dbK-h3-b86"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tbI-S6-ffm"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="NQK-su-gwr" id="VdQ-CE-OdE"/>
                         <outlet property="tableView" destination="r9Y-rs-uu3" id="tG2-PX-eBX"/>
                     </connections>
                 </viewController>

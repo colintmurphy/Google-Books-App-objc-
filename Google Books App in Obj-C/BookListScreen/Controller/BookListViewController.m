@@ -15,6 +15,7 @@
 @interface BookListViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -36,18 +37,20 @@
 
 - (void)getDataFromServer {
     
+    [self.activityIndicator startAnimating];
     NSString *urlString = @"https://www.googleapis.com/books/v1/volumes?q=coding";
     [[NetworkManager shared] requestWithUrl:urlString completion:^(NSMutableArray<Book *> *_Nullable data, NSError *_Nullable error) {
        
         if (data) {
-            //NSLog(@"Returned with data");
             [self->dataSource removeAllObjects];
             [self->dataSource addObjectsFromArray:data];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self->_tableView reloadData];
+                [self->_activityIndicator stopAnimating];
             });
         } else if (error) {
             NSLog(@"Returned an error at requestWithUrl");
+            [self->_activityIndicator stopAnimating];
         }
     }];
 }
@@ -60,6 +63,7 @@
     cellId = @"BookTableViewCell";
     dataSource = [[NSMutableArray alloc] init];
     
+    [self.activityIndicator setHidesWhenStopped:YES];
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
     [self.tableView setTableFooterView:[[UIView alloc] init]];

@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)shared;
 
 - (void)requestWithUrl:(NSString *)urlString completion:(void (^)(NSMutableArray<Book *> *_Nullable data, NSError *_Nullable error))completion;
-- (void)downloadImageWithUrl:(NSString *)urlString completion:(void (^)(UIImage* _Nullable image))completion;
+- (void)downloadImageWithUrl:(NSString *)urlString completion:(void (^)(UIImage *_Nullable image))completion;
 
 @end
 
